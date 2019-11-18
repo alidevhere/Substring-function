@@ -1,0 +1,45 @@
+
+;******************			substring		***********************************************
+;inputs
+;edi=offset of destination string
+;esi=offset of source string
+;eax=character upto which substring is required (excluding that char) 
+;******************	************************************************************************
+
+substring PROC uses ebx
+.data
+esicpy dword ?
+count byte 0
+char byte ?
+.code
+mov char,al
+mov esicpy,esi
+search:
+mov al,[esi]
+cmp char,al
+je cut
+inc count
+inc esi
+jmp search
+
+cut:
+
+mov esi,esicpy
+movzx ecx,count
+rep movsb
+
+;returning number of characters which have read to be used in remove function
+;
+inc count
+movzx eax,count
+ret
+substring ENDP
+;******************************************************************************************
+
+;			EXAMPLE CALL
+;mov esi,offset str1
+;mov edi ,offset str2
+;mov eax,'1'
+;call substring
+
+;******************************************************************************************
