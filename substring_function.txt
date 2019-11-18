@@ -1,9 +1,9 @@
 
 ;******************			substring		***********************************************
 ;inputs
-;edi=offset of destination string
+;edi=offset of destination string(substring offset)
 ;esi=offset of source string
-;eax=character upto which substring is required (excluding that char) 
+;eax=character upto which substring is required (excluding that character) 
 ;******************	************************************************************************
 
 substring PROC uses ebx
